@@ -1,0 +1,469 @@
+<form [formGroup]="hugForm" (ngSubmit)="onSubmitNassau()">
+    <div class="container">
+        <div [hidden]="!submitted">
+            <div class="alert alert-success">
+                <strong>Success!</strong> You successfully submitted the form.
+            </div>
+        </div>
+        
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">HUG Data Submission</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="col-md-4 ">
+                            <div class="form-group">
+                                <label class="center-block">Hospital
+                                    <select class="form-control" formControlName="hospital">                                        
+                                        <option *ngFor="let hospital of hospitals" value={{hospital.id}}>{{hospital.name}}</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="center-block">Month
+                                    <select class="form-control" formControlName="month">
+                                        <option *ngFor="let month of months" value={{month.id}}>{{month.name}}</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="center-block">Year
+                                    <select class="form-control" formControlName="year">
+                                        <option *ngFor="let year of years" value={{year.id}}>{{year.name}}</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Beds Count</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div formGroupName="beds">
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Brain Injury
+                                    <input class="form-control" formControlName="beds_brain_injury">
+                                </label>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label class="center-block">New Born:
+                                    <input class="form-control" formControlName="beds_newborn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Pediatrics
+                                    <input class="form-control" formControlName="beds_pediatrics">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Psychiatric
+                                    <input class="form-control" formControlName="beds_psychiatric">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Physical Rehab
+                                    <input class="form-control" formControlName="beds_physical_rehab">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Burn
+                                    <input class="form-control" formControlName="beds_burn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Neonatal
+                                    <input class="form-control" formControlName="beds_neonatal">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Transition of Care Unit (TCU)
+                                    <input class="form-control" formControlName="beds_transition_care_unit">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Chemical Dependancy Detox
+                                    <input class="form-control" formControlName="beds_chemical_dependency_detox">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Chemical Dependancy Rehab
+                                    <input class="form-control" formControlName="beds_chemical_dependency_rehab">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Med/Surg
+                                    <input class="form-control" formControlName="beds_medical_surgical">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Ob/GYN
+                                    <input class="form-control" formControlName="beds_ob_gyn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="center-block">Certified Beds Total : {{certified_bed_total| number}}
+
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Patient days</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div formGroupName="patient">
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Brain Injury
+                                    <input class="form-control" formControlName="patient_brain_injury">
+                                </label>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label class="center-block">New Born:
+                                    <input class="form-control" formControlName="patient_newborn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Pediatrics
+                                    <input class="form-control" formControlName="patient_pediatrics">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Psychiatric
+                                    <input class="form-control" formControlName="patient_psychiatric">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Physical Rehab
+                                    <input class="form-control" formControlName="patient_physical_rehab">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Burn
+                                    <input class="form-control" formControlName="patient_burn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Neonatal
+                                    <input class="form-control" formControlName="patient_neonatal">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Transition of Care Unit (TCU)
+                                    <input class="form-control" formControlName="patient_transition_care_unit">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Chemical Dependancy Detox
+                                    <input class="form-control" formControlName="patient_chemical_dependency_detox">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Chemical Dependancy Rehab
+                                    <input class="form-control" formControlName="patient_chemical_dependency_rehab">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Med/Surg
+                                    <input class="form-control" formControlName="patient_medical_surgical">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Ob/GYN
+                                    <input class="form-control" formControlName="patient_ob_gyn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="left-block">Patient Total: {{ patient_total | number}}
+                                    <input  type="hidden" formControlName="patient_total_month" ng-readonly="true"/>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Discharges</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div formGroupName="discharges">
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Brain Injury
+                                    <input class="form-control" formControlName="discharges_brain_injury">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">New Born:
+                                    <input class="form-control" formControlName="discharges_newborn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Pediatrics
+                                    <input class="form-control" formControlName="discharges_pediatrics">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Psychiatric
+                                    <input class="form-control" formControlName="discharges_psychiatric">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Physical Rehab
+                                    <input class="form-control" formControlName="discharges_physical_rehab">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Burn
+                                    <input class="form-control" formControlName="discharges_burn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Neonatal
+                                    <input class="form-control" formControlName="discharges_neonatal">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Transition of Care Unit (TCU)
+                                    <input class="form-control" formControlName="discharges_transition_care_unit">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Chemical Dependancy Detox
+                                    <input class="form-control" formControlName="discharges_chemical_dependency_detox">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Chemical Dependancy Rehab
+                                    <input class="form-control" formControlName="discharges_chemical_dependency_rehab">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Med/Surg
+                                    <input class="form-control" formControlName="discharges_medical_surgical">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Ob/GYN
+                                    <input class="form-control" formControlName="discharges_ob_gyn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="left-block">Discharges Total: {{discharges_total| number}}
+
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Admission</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div formGroupName="admission">
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Brain Injury
+                                    <input class="form-control" formControlName="admission_brain_injury">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">New Born:
+                                    <input class="form-control" formControlName="admission_newborn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Pediatrics
+                                    <input class="form-control" formControlName="admission_pediatrics">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Psychiatric
+                                    <input class="form-control" formControlName="admission_psychiatric">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Physical Rehab
+                                    <input class="form-control" formControlName="admission_physical_rehab">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Burn
+                                    <input class="form-control" formControlName="admission_burn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Neonatal
+                                    <input class="form-control" formControlName="admission_neonatal">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Transition of Care Unit (TCU)
+                                    <input class="form-control" formControlName="admission_transition_care_unit">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Chemical Dependancy Detox
+                                    <input class="form-control" formControlName="admission_chemical_dependency_detox">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Chemical Dependancy Rehab
+                                    <input class="form-control" formControlName="admission_chemical_dependency_rehab">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="center-block">Ob/GYN
+                                    <input class="form-control" formControlName="admission_ob_gyn">
+                                </label>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="left-block control-label">Admission Total: {{admission_total| number}}
+
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div formGroupName="additional">
+                        <div class="form-group col-md-4">
+                            <label class="center-block">Ambulatory Surgeries
+                                <input class="form-control" formControlName="ambulatory_surgeries">
+                            </label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="center-block">Emergency Department Visits
+                                <input class="form-control" formControlName="emergency_department_visits">
+                            </label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="center-block">Observation Patients Total Month
+                                <input class="form-control" formControlName="observation_patients_total_month">
+                            </label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="center-block">Admissions from ER
+                                <input class="form-control" formControlName="admission_from_emergency">
+                            </label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="center-block">Treat and Release from ER
+                                <input class="form-control" formControlName="treat_and_release_from_emergency">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Brain Injury Average LOS : {{brain_injury_avg_los| number }}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Newborn Average LOS : {{newborn_avg_los| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Pediatrics Average LOS : {{pediatrics_avg_los| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Phsyical Rehab Average LOS : {{physical_rehab_avg_los| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Psychiatric Average LOS Month : {{psychiatric_avg_los| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Burn Average LOS Month : {{burn_avg_los| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Neonatal Average LOS Month : {{neonatal_avg_los| number}}
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Transition of Care Unit Average LOS Month : {{transition_care_unit_avg_los| number}}
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Chemical Dependancy Detox Average LOS : {{chemical_dependency_detox_avg_los| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Chemical Dependancy Rehab Average LOS: {{chemical_dependency_rehab_avg_los| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Med/Surg Average LOS: {{medical_surgical_avg_los| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Ob/GYN Average LOS Month: {{ob_gyn_avg_los| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Occupancy Rate: {{occupancy_rate| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Ambulatory to Inpatient Admissions Ratio: 
+                            {{ambulatory_surgeries_to_inpatient_admission_ratio| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Admissions from ED to Total Admissions Ratio : 
+                            {{admission_from_emergency_to_total_admission_ratio| number}}
+
+                        </label>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="center-block">Observations to Admissions Ratio : 
+                            {{observation_to_admission_ratio| number}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!hugForm.valid">Submit</button>
+    </div>
+</form>
